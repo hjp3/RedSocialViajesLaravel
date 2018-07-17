@@ -1,0 +1,161 @@
+/* +++++++++++++++++ */
+/* Resets Generales */
+/* +++++++++++++++++ */
+
+* {
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+ul {
+  padding: 0;
+  font-family: 'Slabo 27px';
+  font-size: 20px;
+}
+li {
+    list-style: none;
+}
+
+body {
+  background-color: #94CFFF;
+  font: sans-serif;
+}
+
+/* ++++++++++++++++ */
+/* Pagina principal*/
+/* ++++++++++++++++ */
+
+.container {
+  /*Flex*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+}
+.left {
+  /*Flex*/
+  flex-basis: 70%;
+}
+.right {
+  /*Flex*/
+  flex-basis: 30%;
+  background-image: url("public/img/web/Captura de pantalla 2018-05-17 a la(s) 18.12.26.png");
+  background-size: cover;
+  height: inherit;
+  border-left:4px solid #fff;
+  margin-left: 13px;
+}
+
+.header-class,
+.nav ul {
+  background-color:#BF7427;
+  color: white;
+  /*Flex*/
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.nav ul:visited{
+  color: white;
+}
+
+.nav ul {
+  justify-content: space-around;
+}
+.nav li{
+  padding: 0 25px
+}
+.nav li:hover{
+  background-color: #9e5e1c;
+}
+
+.header-class{
+  background-color: #94CFFF;
+}
+h1{
+  font-family: 'Slabo 27px';
+  font-size: 70px;
+  color: white;
+  margin-left: 30px;
+
+}
+h2{
+  font-family: "Cabin Sketch";
+  font-size: 60px;
+  text-align: center;
+  color: white;
+}
+p{
+  text-align: center;
+  font-family:'Slabo 27px';
+  font-size: 20px;
+  color: white;
+  margin: 70px;
+}
+.conectate{
+  font-family:'Cabin Sketch';
+  font-size: 40px;
+  color: white;
+  text-align: center;
+  background-color: #BF7427;
+}
+form{
+  font-family: 'Slabo 27px';
+  font-size: 20px;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+
+div.registrarse{
+  background-color: #BF7427;
+  text-align: center;
+  color; white;
+  font-size: 30px;
+}
+
+div.container{
+  font-family: 'Slabo 27px';
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+legend{
+  font-family: "Titan One";
+  font-size: 45px;
+  text-align: center;
+}
+div.send{
+  font-size: 50px;
+  text-align: center;
+  text-decoration: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.send{
+display: flex;
+justify-content: center;
+padding: 20px;
+
+}
+
+#fg_membersite {
+  text-align: center;
+}
