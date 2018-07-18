@@ -16,7 +16,12 @@
     	<a href="/viaje" class="btn btn-primary">Volver</a>
     	<a href="#" class="btn btn-primary">Sumate</a>
 		<a href="/viaje/{{ $viaje->id }}/edit" class="btn btn-primary">Editar</a>
-    </div>		    	
+		<form action="/viaje/{{ $viaje->id }}" method="post">
+			{{ csrf_field() }}
+			{{method_field('delete')}}
+			<button type="submit" class="btn btn-danger">Borrar</button>
+		</form>
+	</div>		    	
 			    
 	
 @endsection

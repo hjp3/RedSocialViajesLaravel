@@ -5,10 +5,14 @@
 @section('contenido')
 <form action="/viaje" class="form-group" method="POST" enctype="multipart/form-data">
 	 @csrf
-	 @if($errors->any())  
-		@foreach($errors->all() as $error)
-			<p>{{ $error }}</p>
-		@endforeach
+	 @if($errors->any()) 
+	 	<div class="alert alert-danger"> 
+	 		<ul>
+	 			@foreach($errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach		
+	 		</ul>
+		</div>
 	@endif
 	<div class="form-group">
 		<label for="titulo">Título</label>

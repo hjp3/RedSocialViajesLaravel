@@ -59,7 +59,7 @@ class ViajeController extends Controller
         $viaje->fecha_regreso = $request->input('fecha_regreso');  
         $viaje->portada = $nombre;
         $viaje->save();
-        return "viaje creado";
+        return redirect()->route('viaje.index');
     }
 
     /**
@@ -117,7 +117,7 @@ class ViajeController extends Controller
         }
         $viaje->portada = $nombre;
         $viaje->save();
-        return "viaje editado";
+        return redirect()->route('viaje.show',[$viaje]);
     }
 
     /**
@@ -128,6 +128,8 @@ class ViajeController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $viaje = Viaje::find($id);
+         $viaje->delete();
+         return redirect()->route('viaje.index');
     }
 }
