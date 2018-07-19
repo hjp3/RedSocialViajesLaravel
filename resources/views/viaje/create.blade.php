@@ -23,7 +23,7 @@
 		<input type="text" class="form-control" name="fecha_partida">
 		<label for="fecha_regreso">Fecha Regreso</label>
 		<input type="text" class="form-control" name="fecha_regreso">
-		<label for="fecha_regreso">Avatar</label>
+		<label for="portada">Portada</label>
 		<input type="file" class="form-control" name="portada">
 	</div>
 

@@ -25,4 +25,7 @@ Auth::routes();
 
 Route::resource('viaje','ViajeController');   // accedemos a todas las rutas/métodos de viaje
 
+Route::resource('users','UserController');   // accedemos a todas las rutas/métodos de user
+
+
 Route::get('/home', 'HomeController@index')->name('home');

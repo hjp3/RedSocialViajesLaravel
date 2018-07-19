@@ -108,13 +108,16 @@ class ViajeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $viaje = new Viaje();
+        $viaje = Viaje::find($id);
         $viaje->fill($request->except('portada'));    // llenamos los datos del modelo con menos la foto
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
             $nombre = time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
+        }else{
+            $nombre = 'portada.jpg';
         }
+
         $viaje->portada = $nombre;
         $viaje->save();
         return redirect()->route('viaje.show',[$viaje]);
