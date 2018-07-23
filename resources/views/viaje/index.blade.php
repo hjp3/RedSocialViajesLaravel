@@ -1,4 +1,4 @@
-@extends('layouts.layout_viaje')
+@extends('layouts.layout_principal')
 
 @section('titulo','Viajes')
 

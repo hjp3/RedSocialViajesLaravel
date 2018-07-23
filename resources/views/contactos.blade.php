@@ -2,7 +2,7 @@
 @section('contenido')
 <section class="content">
   <h3 class="conectate">FORMULARIO DE CONTACTO</h3>
-  <form class="" action="index.html" method="post">
+  <form class="" action="#" method="post">
     <div class="">
       <label for="">Nombre</label>
       <input type="text" name="" value="">

@@ -116,4 +116,23 @@ class UserController extends Controller
         // return redirect()->route('/');
         return view("quienes_somos");
     }
+
+    public function sumarViaje($id_u,$id_v){
+        $user = User::findOrFail($id_u);
+        // llamamos al objeto user, a la relación roles, le adjuntamos un viaje indicado
+        $user->viajes()->sync($id_v);
+    }
+
+    public function borrarViaje($id_u,$id_v){
+        $user = User::findOrFail($id_u);
+        // llamamos al objeto user, a la relación roles, le borramos el viaje indicado
+        $user->viajes()->detach($id_v);
+    }
+
+    public function viajesAnotados($id){
+        $user = User::findOrFail($id);
+        return $user->viajes;
+    }
+    
 }
+

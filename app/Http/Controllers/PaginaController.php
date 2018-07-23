@@ -18,13 +18,10 @@ class PaginaController extends Controller
 
     public function quienes_somos()
     {
-    	return view('quines_somos');
+    	return view('quienes_somos');
     }
 
-    public function bienvenido()
-    {
-        return view('bienvenido');
-    }
+    
 
     
 }

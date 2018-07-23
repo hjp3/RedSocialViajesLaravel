@@ -135,4 +135,9 @@ class ViajeController extends Controller
          $viaje->delete();
          return redirect()->route('viaje.index');
     }
+
+    public function UsuariosAnotados($id){
+        $viaje = Viaje::findOrFail($id);
+        return $viaje->users;
+    }
 }

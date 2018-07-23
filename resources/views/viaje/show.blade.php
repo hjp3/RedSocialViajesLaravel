@@ -1,4 +1,4 @@
-@extends('layouts.layout_viaje')
+@extends('layouts.layout_principal')
 
 @section('titulo','Viaje')
 
@@ -14,6 +14,7 @@
     	<h3 class="card">Fecha de Regreso: {{ $viaje->fecha_regreso }}</h3>
     	<br>
     	<a href="/viaje" class="btn btn-primary">Volver</a>
+    	{{-- creamos un registro user-viaje --}}
     	<a href="#" class="btn btn-primary">Sumate</a>
 		<a href="/viaje/{{ $viaje->id }}/edit" class="btn btn-primary">Editar</a>
 		<form action="/viaje/{{ $viaje->id }}" method="post">

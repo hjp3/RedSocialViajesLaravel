@@ -19,16 +19,27 @@ Route::get('/faq', 'PaginaController@faq');
 
 Route::get('/contactos', 'PaginaController@contactos');
 
-Route::get('/somos', 'PaginaController@quienes_somos');
+Route::get('/quienes_somos', 'PaginaController@quienes_somos');
 
 Auth::routes();
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::resource('viaje','ViajeController');   // accedemos a todas las rutas/métodos de viaje
+
+Route::get('/viajeUsers/{id}', 'ViajeController@usuariosAnotados');
 
 Route::resource('users','UserController');   // accedemos a todas las rutas/métodos de user
 
+Route::get('/sumarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
+
+Route::get('/borrarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
+
+Route::get('/userViajes/{id}', 'UserController@viajesAnotados');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/admin','AdminController@index');
  
 // mostramos todos los viajes que participa el usuario 1
 // obtenemos las id de viajes relacionadas con el usuario
