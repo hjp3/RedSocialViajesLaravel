@@ -1,4 +1,4 @@
-@extends('layouts.layout_viaje')
+@extends('layouts.layout_principal')
 
 @section('titulo','Editar Viaje')
 
@@ -19,9 +19,8 @@
 		<label for="descripcion">Email</label>
 		<input type="text" class="form-control" name="email" value="{{ $user->email }}">
 		<label for="password">Password</label>
-		<input type="password" name="password" class="form-control" readonly value="{{ $user->password }}/>
-		<label for="repassword">Repita el Password</label>
-        <input type="password" name="password_confirmation" class="form-control" readonly value="{{ $user->password }}/>
+		<input type="password" name="password" class="form-control" readonly value="{{ $user->password }}"/>
+		
         <input type="hidden" class="form-control" name="old_avatar" value="{{ $user->avatar }}">
 		<label for="fecha_regreso">Avatar</label>
 		<input type="file" class="form-control" name="avatar">

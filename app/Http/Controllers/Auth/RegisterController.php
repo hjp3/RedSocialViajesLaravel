@@ -74,4 +74,13 @@ class RegisterController extends Controller
 
         return $user;
     }
+
+    // si el usuario tiene el email del administrador va a esa vista
+    public function redirectPath(){
+        if(Auth::user()->email == "admin@admin.com"){
+            return "/admin";
+        }
+
+        return "/home";
+    }
 }

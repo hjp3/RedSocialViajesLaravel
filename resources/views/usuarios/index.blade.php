@@ -1,31 +1,36 @@
-@extends('layouts.layout_viaje')
+@extends('layouts.layout_principal')
 
 @section('titulo','Viajes')
 
 @section('contenido')
 
-	<h1 class="text-center">Próximos Viajes</h1>
+	<h1 class="text-center">Todos los Viajeros</h1>
 	<div class="row">
 	@foreach($users as $user)
 		<div class="col-sm">
-			<div class="card " style="width: 18rem;">
-			    <img class="card-img-top mx-auto d-block" style="width:100px;height:100px" src="{{$user->avatar}}" alt="imagen de la portada">	
-			    <div class="card-body text-center">
-			    	<h4 class="card-title">{{ $user->name }}</h4>
-			    	<p class="card">{{ $user->usuario }}</p>
-			    	<p class="card">{{ $user->email }}</p>
+			<div class=" " style="width: 18rem;">
+			    <img class="img-top mx-auto d-block" style="width:100px;height:100px" src="{{$user->avatar}}" alt="imagen de la portada">	
+			    <div class=" text-center">
+			    	<h4 class="title">Nombre: {{ $user->name }}</h4>
+			    	<p class="">Usuario: {{ $user->usuario }}</p>
+			    	<p class="">Email: {{ $user->email }}</p>
 			    	<a href="/users/{{$user->id}}" class="btn btn-primary">Ver Más...</a>
-			    	<form action="/users/{{ $user->id }}" method="post">
-						{{ csrf_field() }}
-						{{method_field('delete')}}
-						<button type="submit" class="btn btn-danger">Borrar</button>
-					</form>
+			    	@if (Auth::user()->email == "admin@admin.com")
+				    	<form action="/users/{{ $user->id }}" method="post">
+							{{ csrf_field() }}
+							{{method_field('delete')}}
+							<button type="submit" class="btn btn-danger">Borrar</button>
+						</form>
+					@endif	
 			    </div>
 			</div>
 		</div>
 		
 	@endforeach
 	</div>
+	<br>
+	{!! $users->links() !!}
+	
 @endsection
 
 

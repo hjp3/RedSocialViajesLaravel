@@ -47,10 +47,10 @@ class ViajeController extends Controller
 
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
-            $nombre = time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
-            $nombre = 'portada.jpg';
+            $nombre = 'img/portada/portada.jpg';
         }
         $viaje = new Viaje();
         $viaje->titulo = $request->input('titulo');  // recibimos el contenido del input
@@ -112,10 +112,10 @@ class ViajeController extends Controller
         $viaje->fill($request->except('portada'));    // llenamos los datos del modelo con menos la foto
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
-            $nombre = time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
-            $nombre = 'portada.jpg';
+            $nombre = 'img/portada/portada.jpg';
         }
 
         $viaje->portada = $nombre;

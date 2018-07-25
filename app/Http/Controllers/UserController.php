@@ -22,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();  // traemos a todos los viajes
+        //$user = USER::all();
+        //$users = $users->whereNotIn('email',['admin@admin.com']);
+        $users = USER::paginate(16);
         return view('usuarios.index', compact('users'));
     }
 
@@ -129,10 +131,9 @@ class UserController extends Controller
         $user->viajes()->detach($id_v);
     }
 
-    public function viajesAnotados($id){
-        $user = User::findOrFail($id);
-        return $user->viajes;
-    }
+    
+
+    
     
 }
 

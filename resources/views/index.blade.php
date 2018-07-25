@@ -19,12 +19,15 @@
         <div class="top-right links">
             {{-- @auth --}}
 
-                <a href="{{ url('/home') }}">Home</a><br>
+                
             {{-- @else --}}
             @if (Auth::guest())
                 <a href="{{ route('login') }}">Login</a><br>
                 <a href="{{ route('register') }}">Register</a><br>
+            @elseif (Auth::user()->email == "admin@admin.com")
+                <a href="{{ url('/admin') }}">Panel Administración</a><br>
             @else
+                <a href="{{ url('/home') }}">Home</a><br>
                 <a href="{{ route('logout') }}">Logout</a>
             @endif    
             {{-- @endauth --}}

@@ -1,6 +1,6 @@
 @extends('layouts.layout_principal')
 
-@section('titulo','Editar Viaje')
+
 
 @section('contenido')
 <form action="/viaje/{{ $viaje->id }}" class="form-group" method="POST" enctype="multipart/form-data">

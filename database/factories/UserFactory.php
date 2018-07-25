@@ -30,7 +30,8 @@ $factory->define(App\User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('123456'),
         'usuario' => $faker->userName,
-        'avatar' => 'img/avatars/foto' . $faker->numberBetween(1, 10) . '.png',
+        //'avatar' => 'img/avatars/foto' . $faker->numberBetween(1, 10) . '.png',
+        'avatar' => $faker->imageUrl($width = 640, $height = 480),
         'remember_token' => str_random(10),
     ];
 });

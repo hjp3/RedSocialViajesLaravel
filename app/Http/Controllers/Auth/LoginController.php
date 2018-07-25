@@ -27,7 +27,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/home';
+
 
     /**
      * Create a new controller instance.
@@ -42,5 +43,14 @@ class LoginController extends Controller
     public function logout(Request $request) {
       Auth::logout();
       return redirect('/');
+    }
+
+    // hacemos el redirect inicial después de loguearse, este método tiene prioridad sobre la propiedad $redirecTo
+    public function redirectPath(){
+        if(Auth::user()->email == "admin@admin.com"){
+            return "/admin";
+        }
+
+        return "/home";
     }
 }
