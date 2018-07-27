@@ -12,8 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,38)->create();
-
         App\User::create([
             'name' => 'Administrador',
             'email' => 'admin@admin.com',
@@ -32,7 +30,7 @@ class UsersTableSeeder extends Seeder
             'avatar' => 'img/avatars/avatar1.png'
         ]);
 
-			
+		factory(App\User::class,38)->create();	
 		// $faker = Faker::create();
 
 		// $limit = $faker->numberBetween(1,10);
@@ -45,5 +43,30 @@ class UsersTableSeeder extends Seeder
 
 		// 	$user->viajes()->attach($viaje);
 		// }
+		// fuente: http://notasweb.com/grupo/principiantes/tema/numeros-aleatorios-que-no-se-repitan.html
+		factory(App\User::class, 38)->create()->each(function(App\User $user){
+       		rand(1,3),
+   			rand(4,6),
+   			rand(7,10),
+       		
+       	});
     }
 }
+
+ 
+
+ 		// 	$numeros=array();  
+			// $i=0;  
+			// $lim = rand(1,10);
+			// while($i<$lim)  
+			// {  
+			//     $num=rand(1,10);  
+			//     if(in_array($num,$numeros)===false)  
+			//     {  
+			//         array_push($numeros,$num);  
+			//         $i++;
+			//         $user->viajes()->attach($num);  
+			//     }  
+			// } 
+ 
+    

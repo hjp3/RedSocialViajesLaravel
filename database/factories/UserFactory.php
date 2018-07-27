@@ -31,7 +31,7 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => $password ?: $password = bcrypt('123456'),
         'usuario' => $faker->userName,
         //'avatar' => 'img/avatars/foto' . $faker->numberBetween(1, 10) . '.png',
-        'avatar' => $faker->imageUrl($width = 640, $height = 480),
+        'avatar' => "img/avatars/foto" . rand(1,10),
          // atring aleatorio para que recordar usuario y no pida datos en el inicio sesión
         'remember_token' => str_random(10),
     ];

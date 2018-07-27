@@ -20,7 +20,8 @@ class UsersSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => bcrypt('123456'),
             'usuario' => 'admin',
-            'avatar' => 'img/avatars/admin.png'
+            'avatar' => 'img/avatars/admin.png',
+            'remember_token' => str_random(10)
 
         ]):
 
@@ -30,7 +31,8 @@ class UsersSeeder extends Seeder
             'email' => 'usuario1@usuario1.com',
             'password' => bcrypt('123456'),
             'usuario' => 'uno',
-            'avatar' => 'img/avatars/avatar1.png'
+            'avatar' => 'img/avatars/avatar1.png',
+            'remember_token' => str_random(10)
         ]):
 
 			

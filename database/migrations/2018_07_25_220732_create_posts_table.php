@@ -31,13 +31,14 @@ class CreatePostsTable extends Migration
             $table->timestamps();
 
             // relaciones
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');   // eliminamos/ac los post del usuario en cascada
             
-            $table->foreign('categoria_id')->references('id')->on('categorias')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');   // eliminamos/ac los post del usuario en cascada
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //->onUpdate('cascade');   
+            // eliminamos/ac los post del usuario en cascada
+            
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
+            //->onUpdate('cascade');   
+            // eliminamos/ac los post del usuario en cascada
         });
     }
 

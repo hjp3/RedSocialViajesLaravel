@@ -11,7 +11,7 @@ $factory->define(App\Post::class, function (Faker $faker) {
         'slug' => str_slug($titulo),   // convertimos cualquier string a slug
         'extracto' => $faker->text(200),
     	'cuerpo' => $faker->text(500),   // texto de 500 caracteres
-    	'imagen' => $faker->imageUrl($width = 1200, $height = 400),
-    	'status' => $faker->randomElement(['BORRADOR','PUBLICADO'])
+    	'imagen' => "img/portada/foto" . rand(1,6),
+    	'status' => $faker->randomElement(['BORRADOR','PUBLICADO']),
     ];
 });
