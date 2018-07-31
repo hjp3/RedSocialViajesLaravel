@@ -4,35 +4,41 @@
     <h2>No tendrás un viaje aburrido!!</h2>
     @if (Auth::user())
         <h3>{{ Auth::user()->name }}</h3>
-    @else  
+    @else
         <h3></h3>
-    @endif    
-    <p class="intro"> Somos una Red Social que permite comunicarse con otras personas con tus mismos intereses y tus mismas posibilidades de viajar a distintas ciudades del mundo.</p>
-    <p>Completá tus datos y ponete en contacto con gente cerca tuyo que quieren ir a dónde vas vos.</p>
+    @endif
+
+    <p>Completá tus datos y ponete en contacto con gente que quiere ir a donde vas vos</p>
+      <br>
+      <br>
+      <br>
+      
+
+
     <h3 class="conectate">Conectate al mundo</h3>
   </section>
 
-  
+
   <section>
-    
+
     {{-- @if (Route::has('login')) --}}
         <div class="top-right links">
             {{-- @auth --}}
 
-                
+
             {{-- @else --}}
             @if (Auth::guest())
-                <a href="{{ route('login') }}">Login</a><br>
-                <a href="{{ route('register') }}">Register</a><br>
+                <a href="{{ route('login') }}"> -> Logeate   :)</a><br>
+                <a href="{{ route('register') }}">  -> Registrate   :)</a><br>
             @elseif (Auth::user()->email == "admin@admin.com")
                 <a href="{{ url('/admin') }}">Panel Administración</a><br>
             @else
                 <a href="{{ url('/home') }}">Home</a><br>
                 <a href="{{ route('logout') }}">Logout</a>
-            @endif    
+            @endif
             {{-- @endauth --}}
         </div>
-    
+
   </section>
 
 @endsection('contenido')
