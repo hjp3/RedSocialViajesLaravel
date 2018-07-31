@@ -7,7 +7,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Crear Catagoría
+						Crear Categoría
 					</div>
 					
 				</div>
@@ -20,9 +20,10 @@
 						<div class="form-group">
 							<label for="nombre">Nombre</label>
 							<input type="text" class="form-control" name="nombre">
+							<label for="nombre">Cuerpo</label>
 							<textarea name="cuerpo" class="form-control"></textarea>
 							
-							<button type="submit" class="btn btn-primary">Crear Catagoría</button>
+							<button type="submit" class="btn btn-primary">Crear Categoría</button>
 						</div>
 
 							
