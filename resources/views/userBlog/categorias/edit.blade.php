@@ -7,22 +7,23 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Editar Etiqueta
+						Editar Categoría
 					</div>
 					
 				</div>
 
 				<div class="panel-body">
 	            	
-	            	<form action="{{ route('etiquetas.update', $etiqueta->id) }}" class="form-group" method="POST" enctype="multipart/form-data">
+	            	<form action="{{ route('categorias.update', $categoria->id) }}" class="form-group" method="POST" enctype="multipart/form-data">
 						@csrf
 						{{method_field('PATCH')}}
 						<div class="form-group">
 							<label for="nombre">Nombre</label>
-							<input type="text" class="form-control" name="nombre" value="{{ $etiqueta->nombre }}">
-							<label for="slug">Nombre</label>
-							<input type="text" class="form-control" name="slug" value="{{ $etiqueta->slug }}">
-							<button type="submit" class="btn btn-primary">Crear Etiqueta</button>
+							<input type="text" class="form-control" name="nombre" value="{{ $categoria->nombre }}">
+							<textarea name="cuerpo" class="form-control">{{ $categoria->cuerpo }}</textarea>
+							{{-- <label for="slug">Nombre</label>
+							<input type="text" class="form-control" name="slug" value="{{ $categoria->slug }}"> --}}
+							<button type="submit" class="btn btn-primary">Editar Categoría</button>
 						</div>
 
 							
@@ -32,6 +33,5 @@
 			</div>
 		</div>
 	</div>
-	hola
 
 @endsection
