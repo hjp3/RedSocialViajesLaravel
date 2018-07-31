@@ -1,11 +1,13 @@
 @extends('layouts.layout_principal')
 @section('contenido')
 <div class="somos">
-  <h3>Somos una Red Social que permite que nos podamos comunicar con otras
-  personas con mismos intereses y posibilidades de viajar a distintas ciudades
-  del mundo.</h3>
-
-  <h2>Animate!!! Viajá con <h1><img src="img/avion1-50.jpg"><a href="{{ url('/') }}">Group Trip</a></h1>
+  <br>
+  <h3> Somos una Red Social que te permite comunicarte con otras personas con tus mismos intereses y tus mismas posibilidades de viajar a distintas ciudades del mundo.</h3>
+  <br>
+  <br>
+  <h2>Dale!! Animate a conocer, animate a viajar con </h2>
+  <br>
+  <h1 href="{{ url('/') }}">Group Trip<h1/>
 
 </div>
-@endsection('contenido')  
+@endsection('contenido')
