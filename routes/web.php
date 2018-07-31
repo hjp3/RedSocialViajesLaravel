@@ -11,25 +11,38 @@
 |
 */
 
+// página principal
 Route::get('/', function () {
     return view('index');
 });
 
+
+// páginas secundarias de la página principal
 Route::get('/faq', 'PaginaController@faq');
 
 Route::get('/contactos', 'PaginaController@contactos');
 
 Route::get('/quienes_somos', 'PaginaController@quienes_somos');
 
+
+// rutas usuarios/login
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
+Route::resource('users','UserController');   // accedemos a todas las rutas/métodos de user
+
+// home del usuario
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+// rutas viajes
 Route::resource('viaje','ViajeController');   // accedemos a todas las rutas/métodos de viaje
 
 Route::get('/viajeUsers/{id}', 'ViajeController@usuariosAnotados');
 
-Route::resource('users','UserController');   // accedemos a todas las rutas/métodos de user
 
 Route::get('/sumarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
 
@@ -37,8 +50,24 @@ Route::get('/borrarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
 
 Route::get('/userViajes/{id}', 'UserController@viajesAnotados');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
+// Rutas del módulo blog
+// todos los posts, le ponemos blog a la ruta
+Route::get('blog','BlogController@blog')->name('blog');
+// un post en particular
+Route::get('post/{id}','BlogController@post')->name('post');
+Route::get('categoria/{id}','BlogController@categoria')->name('categoria');
+Route::get('etiqueta/{id}','BlogController@etiqueta')->name('etiqueta');
+
+
+// usuario blog
+Route::resource('etiquetas','EtiquetaController'); 
+Route::resource('categorias','CategoriaController'); 
+Route::resource('posts','PostController'); 
+
+
+
+// administrador
 Route::get('/admin','AdminController@index');
  
 // mostramos todos los viajes que participa el usuario 1

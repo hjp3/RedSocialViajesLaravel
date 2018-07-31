@@ -9,6 +9,6 @@ $factory->define(App\Viaje::class, function (Faker $faker) {
         'fecha_partida' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'fecha_regreso' => $faker->date($format = 'Y-m-d', $max = 'now'),
         //'portada' => 'img/portada/foto' . $faker->numberBetween(1, 5) . '.png'
-        'portada' => "img/avatars/foto" . rand(1,10),
+        'portada' => $faker->imageUrl($width = 640, $height = 480),
     ];
 });

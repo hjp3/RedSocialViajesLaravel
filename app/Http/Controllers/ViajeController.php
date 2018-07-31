@@ -70,7 +70,7 @@ class ViajeController extends Controller
      */
     public function show($id)
     {
-        $viaje = Viaje::find($id);  // usamos la función id
+        $viaje = Viaje::find($id);  // usamos la función find
         return view('viaje.show', compact('viaje'));    // pasamos los viajes a la vista show
     }
 
@@ -93,8 +93,8 @@ class ViajeController extends Controller
      */
     public function edit($id)
     {
-        $viaje = Viaje::find($id);  // usamos la función id
-        return view('viaje.edit', compact('viaje'));    // pasamos los viajes a la vista edit
+        $viaje = Viaje::find($id);  // usamos la función find
+        return view('viaje.edit', compact('viaje'));    //pasamos los viajes a la vista edit
     }
 
     /**

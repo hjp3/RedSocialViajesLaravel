@@ -7,12 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
 
+	protected $guarded = [];
+
+	//protected $guarded[];
 	// todos los campos van a ser llenados en un formulario
-	protected $fillable = ['titulo','slug','extracto','cuerpo','status','imagen'];
+	//protected $fillable = ['user_id','categoria_id','titulo','slug','extracto','cuerpo','status','imagen'];
 
 	// un post pertenece a un usuario
 	public function user(){
-		return $this->belongsTo(User::class, 'user_id');
+		return $this->belongsTo(User::class);
 	}
 
 	// un post pertenece a una categoria

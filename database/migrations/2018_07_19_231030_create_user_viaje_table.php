@@ -24,11 +24,13 @@ class CreateUserViajeTable extends Migration
             $table->timestamps();
             // la columna user_id es una rerencia de la id un usuario en la tabla viajes
             $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+                 ->onDelete('cascade')
+                 ->onUpdate('cascade');
+
             $table->foreign('viaje_id')->references('id')->on('viajes')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+                
         });
     }
 

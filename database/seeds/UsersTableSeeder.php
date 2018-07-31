@@ -45,9 +45,19 @@ class UsersTableSeeder extends Seeder
 		// }
 		// fuente: http://notasweb.com/grupo/principiantes/tema/numeros-aleatorios-que-no-se-repitan.html
 		factory(App\User::class, 38)->create()->each(function(App\User $user){
-       		rand(1,3),
-   			rand(4,6),
-   			rand(7,10),
+       		$numeros=array();  
+			$i=0;  
+			$lim = rand(1,10);
+			while($i<$lim)  
+			{  
+			    $num=rand(1,10);  
+			    if(in_array($num,$numeros)===false)  
+			    {  
+			        array_push($numeros,$num);  
+			        $i++;
+			        $user->viajes()->attach($num);  
+			    }  
+			} 
        		
        	});
     }
@@ -55,18 +65,6 @@ class UsersTableSeeder extends Seeder
 
  
 
- 		// 	$numeros=array();  
-			// $i=0;  
-			// $lim = rand(1,10);
-			// while($i<$lim)  
-			// {  
-			//     $num=rand(1,10);  
-			//     if(in_array($num,$numeros)===false)  
-			//     {  
-			//         array_push($numeros,$num);  
-			//         $i++;
-			//         $user->viajes()->attach($num);  
-			//     }  
-			// } 
+ 		
  
     

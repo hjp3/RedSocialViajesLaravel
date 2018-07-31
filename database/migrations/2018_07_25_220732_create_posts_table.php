@@ -18,9 +18,8 @@ class CreatePostsTable extends Migration
             $table->integer('user_id')->unsigned();  
             $table->integer('categoria_id')->unsigned();
 
-            $table->string('titulo',128);  // el título igual al slug
-            $table->string('slug',128);
-
+            $table->string('titulo',128);  
+            $table->string('slug',128)->unique();
             $table->mediumText('extracto')->nullable();
             $table->text('cuerpo');
             // le ponemos valores constantes
@@ -32,12 +31,13 @@ class CreatePostsTable extends Migration
 
             // relaciones
             
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            //->onUpdate('cascade');   
+            $table->foreign('user_id')->references('id')->on('users')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');   
             // eliminamos/ac los post del usuario en cascada
             
-            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
-            //->onUpdate('cascade');   
+            $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade')
+                ->onUpdate('cascade');   
             // eliminamos/ac los post del usuario en cascada
         });
     }

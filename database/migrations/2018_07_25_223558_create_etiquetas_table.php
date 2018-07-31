@@ -17,8 +17,7 @@ class CreateEtiquetasTable extends Migration
             $table->increments('id');
             
             $table->string('nombre',128);
-            $table->string('slug',128)->unique();
-            
+            $table->string('slug',128)->unique();            
             $table->timestamps();
 
             

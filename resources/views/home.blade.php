@@ -25,6 +25,7 @@
                     <a href="/users/{{ Auth::user()->id }}/edit" class="btn btn-primary">Editar</a>
                     <br>
                     <a href="{{ url('/') }}">Página Principal</a>
+                    <ul>
                     @guest
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
@@ -37,8 +38,10 @@
                             <a class="dropdown-item" href="{{ route('logout') }}">
                             Logout</a>
                             <li><a href="{{route('users.index')}}" class="btn"><h3>Ver Otros Viajeros</h3></a></li>
+
                         </li>
                     @endguest
+                    </ul>
                 </div>
             </div>
         </div>
