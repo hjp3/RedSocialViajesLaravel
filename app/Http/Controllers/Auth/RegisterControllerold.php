@@ -46,7 +46,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    
+
     protected function validator(array $data)
     {
         return Validator::make($data, [
@@ -63,13 +63,13 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create($imagen,array $data)
+    protected function create(array $data)
     {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $imagen, 
+            // 'avatar' => $imagen,
             'usuario' => $data['usuario']
         ]);
 
@@ -77,11 +77,11 @@ class RegisterController extends Controller
     }
 
     // si el usuario tiene el email del administrador va a esa vista
-    public function redirectPath(){
+    /*public function redirectPath(){
         if(Auth::user()->email == "admin@admin.com"){
             return "/admin";
         }
 
         return "/home";
-    }
+    }*/
 }
