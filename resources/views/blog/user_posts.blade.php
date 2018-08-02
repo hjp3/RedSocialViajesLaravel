@@ -2,13 +2,13 @@
 
 @section('contenido')
 	<br>
-	{{-- @if (Auth::user())
+	@if (Auth::user())
 		<ul class="nav navbar-nav navbar-right">
 			<li><a href="{{ route('etiquetas.index') }}">Etiquetas</a></li>
             <li><a href="{{ route('categorias.index') }}">Categorías</a></li>
             <li><a href="{{ route('posts.index') }}">Entradas</a></li>
 		</ul>
-	@endif --}}
+	@endif
 	<br>
 	<div class="container">
 		<div class="col-md-8 col-md-offset-2">

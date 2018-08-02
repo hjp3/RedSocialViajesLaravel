@@ -12,7 +12,7 @@
     	<br>
     	<a href="/users" class="btn btn-primary">Volver</a>
     	<a href="/users/{{ $user->id }}/edit" class="btn btn-primary">Editar</a>
-    	@if (Auth::user()->email == "admin@admin.com")
+		@if (Auth::user()->email == "admin@admin.com")
 			<form action="/users/{{ $user->id }}" method="post">
 				{{ csrf_field() }}
 				{{method_field('delete')}}

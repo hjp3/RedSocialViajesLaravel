@@ -7,7 +7,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Lista de Categorías
+						Lista de Posts
 						<a href="{{ route('posts.create') }}" class="btn btn-sm btn-primary pull-right">Crear</a>
 					</div>
 					
@@ -18,7 +18,7 @@
 	            		<thead>
 	            			<tr>
 	            				<th width="10px">ID</th>
-	            				<th>Nombre:</th>
+	            				<th>Título:</th>
 	            				<th colspan="3">&nbsp;</th>
 	            			</tr>
 	            		</thead>
@@ -26,7 +26,7 @@
 	            			@foreach($posts as $post)
 	            			<tr>
 	            				<td>{{ $post->id }}</td>
-	            				<td>{{ $post->nombre }}</td>
+	            				<td>{{ $post->titulo }}</td>
 	            				<td width="10px">
 	            					<a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-default">Ver</a>
 	            				</td>

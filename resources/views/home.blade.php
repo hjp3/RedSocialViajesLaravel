@@ -38,6 +38,7 @@
                             <a class="dropdown-item" href="{{ route('logout') }}">
                             Logout</a>
                             <li><a href="{{route('users.index')}}" class="btn"><h3>Ver Otros Viajeros</h3></a></li>
+                            <li><a href="{{ route('blog_usuario')}}" class="pull-right">Mis Posteos</a></li>
 
                         </li>
                     @endguest

@@ -41,19 +41,21 @@ Route::get('/home', 'HomeController@index')->name('home');
 // rutas viajes
 Route::resource('viaje','ViajeController');   // accedemos a todas las rutas/métodos de viaje
 
-Route::get('/viajeUsers/{id}', 'ViajeController@usuariosAnotados');
+Route::get('/viajeUsers/{id}', 'ViajeController@usuariosAnotados')->name('usuarios_viajes');
 
 
-Route::get('/sumarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
+Route::get('/sumarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje')->name('sumar_viaje');
 
-Route::get('/borrarViaje/{user_id}/{viaje_id}', 'UserController@sumarViaje');
+Route::get('/borrarViaje/{user_id}/{viaje_id}', 'UserController@borrarViaje')->name('borrar_viaje');
 
-Route::get('/userViajes/{id}', 'UserController@viajesAnotados');
+Route::get('/userViajes/{id}', 'UserController@viajesAnotados')->name('viajes_usuarios');
 
 
 // Rutas del módulo blog
 // todos los posts, le ponemos blog a la ruta
 Route::get('blog','BlogController@blog')->name('blog');
+// todos los posts de un usuario
+Route::get('blogUsuario','BlogController@blogUsuario')->name('blog_usuario');
 // un post en particular
 Route::get('post/{id}','BlogController@post')->name('post');
 Route::get('categoria/{id}','BlogController@categoria')->name('categoria');

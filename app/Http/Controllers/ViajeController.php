@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Viaje;
+use App\User;
 
 class ViajeController extends Controller
 {
@@ -16,6 +17,7 @@ class ViajeController extends Controller
     {
         $viajes = Viaje::all();  // traemos a todos los viajes
         return view('viaje.index', compact('viajes'));    // pasamos los viajes a la vista   
+
     }
 
     /**
@@ -52,6 +54,7 @@ class ViajeController extends Controller
         }else{
             $nombre = 'img/portada/portada.jpg';
         }
+        
         $viaje = new Viaje();
         $viaje->titulo = $request->input('titulo');  // recibimos el contenido del input
         $viaje->descripcion = $request->input('descripcion');  // recibimos el contenido del input
@@ -138,6 +141,32 @@ class ViajeController extends Controller
 
     public function UsuariosAnotados($id){
         $viaje = Viaje::findOrFail($id);
-        return $viaje->users;
+        $anotados = $viaje->users;
+        return redirect()->route('viaje.show',compact('anotados'));
     }
+
+    public function anotarUsuario($viajeId, $userId){
+        $viaje = Viaje::findOrFail($viajeId);
+        $user = User::findOrFail($usuarioId);
+        $viajeUsuario = $viaje->users()->attach($user);
+        return redirect()->route('viaje.show',compact('viajeUsuario'));
+    }
+
+    public function borrarUsuario($viajeId, $userId){
+        $viaje = Viaje::findOrFail($viajeId);
+        $user = User::findOrFail($userId);
+        $viajeUsuario = $viaje->users()->detach($user);
+        return redirect()->route('viaje.show',compact('viajeUsuario'));
+    }
+
+    public function contarUsuarios($viajeId, $userId){
+        $viaje = Viaje::findOrFail($viajeId);
+        $user = User::findOrFail($userId);
+        $viajeUsuario = $viaje->users()->detach($user);
+        return redirect()->route('viaje.show',compact('viajeUsuario'));
+    }
+
+   /* $count = User::where('votes', '>', 100)->count();
+    $users = User::where('votes', '>', 100)->take(10)->get();
+    Code::where('to_be_used_by_user_id', '!=' , 2)->orWhereNull('to_be_used_by_user_id*/
 }

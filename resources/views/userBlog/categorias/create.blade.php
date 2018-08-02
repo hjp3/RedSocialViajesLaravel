@@ -27,7 +27,8 @@
 						</div>
 
 							
-					</form>        
+					</form> 
+					<a href="{{route('categorias.index')}}" class="btn"><h3>Volver</h3></a>       
 				</div>
 
 			</div>

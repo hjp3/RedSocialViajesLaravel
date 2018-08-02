@@ -20,8 +20,16 @@ class CreateTableViajes extends Migration
             $table->date('fecha_partida');
             $table->date('fecha_regreso');
             $table->timestamps();
+
+
+            // usuarios asociados
+            $table->integer('user_id')->unsigned()->nullable();
+            $table->foreign('user_id')->references('id')->on('users'); 
         });
     }
+
+
+
 
     /**
      * Reverse the migrations.

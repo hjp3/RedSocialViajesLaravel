@@ -25,7 +25,8 @@
 						</div>
 
 							
-					</form>        
+					</form>
+					<a href="{{route('etiquetas.index')}}" class="btn"><h3>Volver</h3></a>        
 				</div>
 
 			</div>

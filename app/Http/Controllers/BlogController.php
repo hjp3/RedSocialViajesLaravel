@@ -18,6 +18,17 @@ class BlogController extends Controller
 
     }
 
+
+    public function blogUsuario(){
+        $posteos = Post::orderBy('id','DESC')
+        // traemos los post del usuario logueado
+        ->where('user_id','auth()->user()->id')
+        ->paginate(3);
+        
+         return  view('blog.user_posts',compact('posteos'));
+    }
+
+
     public function post($id){
     	$post = Post::find($id);
     	return view('blog.post',compact('post'));

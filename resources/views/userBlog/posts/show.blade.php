@@ -13,17 +13,16 @@
 				</div>
 
 				<div class="panel-body">
-	            	<p><strong>Título:&nbsp;</strong>{{ $post->nombre }}</p>
+					<p><strong>Título:&nbsp;</strong>{{ $post->titulo }}</p>
 	            	<p><strong>Slug:&nbsp;</strong>{{ $post->slug }}</p>
 	            	<p><strong>Extracto:&nbsp;</strong></p>
 	            	<p>{{ $post->extracto }}</p>
 	            	<p><strong>Cuerpo:&nbsp;</strong></p>
 	            	<p>{{ $post->cuerpo }}</p>
 	            	<p><strong>Estado:&nbsp;</strong>{{ $post->status }}</p>
-	            	<p><img src="{{ $post->imagen }}"></p>
-        
-	            		
-	            </div>
+	            	<p>Imagen:<img src="{{ $post->imagen }}"></p>
+	            	<a href="{{route('posts.index')}}" class="btn"><h3>Volver</h3></a>
+        	</div>
 
 			</div>
 		</div>

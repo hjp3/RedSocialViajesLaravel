@@ -17,6 +17,7 @@
 	            	<p><strong>Slug:&nbsp;</strong>{{ $etiqueta->slug }}</p>
 	            		
 	            </div>
+	            <a href="{{route('etiquetas.index')}}" class="btn"><h3>Volver</h3></a>
 
 			</div>
 		</div>
