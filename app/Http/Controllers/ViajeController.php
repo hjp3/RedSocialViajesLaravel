@@ -159,14 +159,19 @@ class ViajeController extends Controller
         return redirect()->route('viaje.show',compact('viajeUsuario'));
     }
 
-    public function contarUsuarios($viajeId, $userId){
+    public function contarUsuarios($viajeId){
         $viaje = Viaje::findOrFail($viajeId);
-        $user = User::findOrFail($userId);
-        $viajeUsuario = $viaje->users()->detach($user);
-        return redirect()->route('viaje.show',compact('viajeUsuario'));
+        $count = $viaje->users()->count();
+        return redirect()->route('viaje.show',compact('count'));
     }
 
-   /* $count = User::where('votes', '>', 100)->count();
+   /* 
     $users = User::where('votes', '>', 100)->take(10)->get();
-    Code::where('to_be_used_by_user_id', '!=' , 2)->orWhereNull('to_be_used_by_user_id*/
+    Code::where('to_be_used_by_user_id', '!=' , 2)->orWhereNull('to_be_used_by_user_id
+        instalar node.js
+vamos a la página dónde lo zipeamos
+npm install
+npm start
+
+    */
 }
