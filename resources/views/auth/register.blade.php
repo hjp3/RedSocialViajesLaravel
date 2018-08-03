@@ -3,7 +3,7 @@
 <section class="content">
 
 <h3 class="conectate">FORMULARIO DE REGISTRO</h3>
-  <form class="" action="{{ route('register') }}" method="post">
+  <form class="" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="">
       <label for="">Nombre</label>
