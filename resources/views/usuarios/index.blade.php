@@ -11,9 +11,8 @@
 			<div class=" " style="width: 18rem;">
 			    <img class="img-top mx-auto d-block" style="width:100px;height:100px" src="{{$user->avatar}}" alt="imagen de la portada">	
 			    <div class=" text-center">
-			    	<h4 class="title">Nombre: {{ $user->name }}</h4>
-			    	<p class="">Usuario: {{ $user->usuario }}</p>
-			    	<p class="">Email: {{ $user->email }}</p>
+			    	<p class="title">Nombre: {{ $user->name }}</p>
+			    	<p ({{ $user->usuario }})</p>
 			    	<a href="/users/{{$user->id}}" class="btn btn-primary">Ver Más...</a>
 			    	@if (Auth::user()->email == "admin@admin.com")
 				    	<form action="/users/{{ $user->id }}" method="post">
@@ -22,7 +21,9 @@
 							<button type="submit" class="btn btn-danger">Borrar</button>
 						</form>
 					@endif	
+			    <br><br>
 			    </div>
+			    
 			</div>
 		</div>
 		

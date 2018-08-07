@@ -19,13 +19,15 @@
     	<h3 class="">Fecha de Partida: {{ $viaje->fecha_partida }}</h3>
     	<h3 class="">Fecha de Regreso: {{ $viaje->fecha_regreso }}</h3>
     	<br>
-    	<h3>Viajeros Confirmados</h3>
+    	<h3>Viajeros Confirmados:{{ $viaje->users()->count() }} </h3>
+    	<br>
     	    @foreach ($viaje->users as $user)
-		        <h4>{{ $user->usuario }}</h4>
+		        <h4><a href="/users/{{$user->id}}">{{ $user->name }}</a></h4>
 		        <p><img class="card-img-top mx-auto d-block" style="width:30px;height:30px" src="{{$user->avatar}}" alt="imagen del usuario"></p>
 		    @endforeach
 		
-    	<a href="/viaje" class="btn btn-primary">Volver</a>
+		<br>
+		<a href="/viaje" class="btn btn-primary">Volver</a>
     	@if (Auth::user()->email == "admin@admin.com")
 			<a href="/viaje/{{ $viaje->id }}/edit" class="btn btn-primary">Editar</a>
 			<form action="/viaje/{{ $viaje->id }}" method="post">
@@ -34,8 +36,12 @@
 			<button type="submit" class="btn btn-danger">Borrar</button>
 			</form>
 		@else
-			<a href="#" class="btn btn-primary">Sumate</a>
-		@endif		
+			{{-- {{dd($viaje->id)}} --}}
+			<a href="/anotarUsuarioViaje/{{Auth::user()->id}}/{{ $viaje->id }}" class="btn btn-primary">Sumate</a>
+			<a href="/borrarUsuarioViaje/{{Auth::user()->id}}/{{ $viaje->id }}" class="btn btn-primary">Borrate</a>
+			
+		@endif
+				
 	</div>		    	
 			    
 	

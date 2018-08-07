@@ -71,7 +71,7 @@ class EtiquetaController extends Controller
         $etiquetas = Etiqueta::orderBy('id', 'desc')->paginate(5);
         // ['tags' => $tags]
         //dd($etiquetas);
-        return view('userBlog.etiquetas.index',compact('etiquetas'))->with('info','Etiqueta creada con éxito');;
+        return view('userBlog.etiquetas.index',compact('etiquetas'))->with('info','Etiqueta creada con éxito');
         // antes de guardar, damos la chance de cambiar los datos
         // redireccionamos con el atributo id
         // le pasamos una variable de sesión flash, el texto desaparece cuando se actualiza

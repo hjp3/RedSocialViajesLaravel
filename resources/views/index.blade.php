@@ -28,7 +28,7 @@
 
             {{-- @else --}}
             @if (Auth::guest())
-                <a href="{{ route('login') }}"> -> Logeate   :)</a><br>
+                <a href="{{ route('login') }}"> -> Logueate   :)</a><br>
                 <a href="{{ route('register') }}">  -> Registrate   :)</a><br>
             @elseif (Auth::user()->email == "admin@admin.com")
                 <a href="{{ url('/admin') }}">Panel Administración</a><br>

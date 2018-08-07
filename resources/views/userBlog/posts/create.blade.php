@@ -23,7 +23,7 @@
 							<input type="hidden" name="user_id" value="{{ Auth::id() }}">
 							<label>Elegí la categoría</label>
 							{{-- {{dd($categorias)}} --}}
-							<select name="categoriaId">
+							<select name="categoria_id">
 							 @foreach($categorias as $categoriaid => $categorianombre)
 							     <option value="{{$categoriaid}}">{{$categorianombre}}</option>
 							 @endforeach
@@ -41,12 +41,12 @@
 							<textarea name="cuerpo" class="form-control"></textarea>
 							<label for="status">Estado</label><br>
 							<input type="radio" name="status" value="BORRADOR">borrador<br>
-  							<input type="radio" name="status" value="PUBLICADO">publicado<br>
+  							<input type="radio" name="status" value="PUBLICADO" checked>publicado<br>
 							<input type="file" class="form-control" name="imagen">
        
 							<button type="submit" class="btn btn-primary">Crear Post</button>
 						</div>
-						<a href="{{route('posts.index')}}" class="btn"><h3>Volver</h3></a>
+						<a href="{{route('home')}}" class="btn"><h3>Volver</h3></a>
 
 							
 					</form>        

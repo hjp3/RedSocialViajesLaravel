@@ -5,7 +5,7 @@ use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Cookie;
 
 class LoginController extends Controller
 {
@@ -47,10 +47,11 @@ class LoginController extends Controller
 
     // hacemos el redirect inicial después de loguearse, este método tiene prioridad sobre la propiedad $redirecTo
     public function redirectPath(){
+        Cookie::queue('email_user',Auth::user()->email,6000);
         if(Auth::user()->email == "admin@admin.com"){
             return "/admin";
         }
-
+        
         return "/home";
     }
 }

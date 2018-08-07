@@ -23,8 +23,16 @@
  						<img src="{{ $post->imagen }}" class="img-responsive">
  					@endif
  					{{ $post->extracto }}
-					
+					<br>
 					<a href="{{ route('post',$post->id)}}" class="pull-right">Leer Más</a>
+					
+					@foreach ($usuarios as $usuario)
+						<div
+						    @if($usuario->id == $post->user_id)
+						       <p> posteado por <a href="/users/{{$usuario->id}}">{{ $usuario->name }}</a></p>	
+						    @endif
+						</div>
+					@endforeach
 				</div>
 			</div>
 			<br>

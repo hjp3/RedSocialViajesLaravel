@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Categoria;
 use App\Etiqueta;
+use App\User;
 
         
 
@@ -24,13 +25,30 @@ class PostController extends Controller
         $this->middleware('auth');
     }
 
+    
 
     public function index()
     {
-        $posts = Post::orderBy('id')->paginate(5);
+        
+        $posts = Post::orderBy('id')->paginate(10);
         // ['tags' => $tags]
         //dd($posts);
-        return view('userBlog.posts.index',compact('posts'));
+        //$autor = User::all()->where('id',$id)->first();
+        return view('userBlog.posts.index',compact(['posts']));
+    }
+
+    public function indexado($id){
+        $usuario_id = User::where('id',$id)->pluck('id')->first();
+        //dd($usuario_id);
+        $posts = Post::orderBy('id')
+        // traemos los post del usuario logueado
+        ->where('user_id',$usuario_id)
+        ->paginate(10);
+        // ['tags' => $tags]
+        //dd($posts);
+        $autor = User::all()->where('id',$id)->first();
+        return view('/userBlog/posts/indexado',compact(['posts','autor']));
+
     }
 
     /**
@@ -72,16 +90,17 @@ class PostController extends Controller
             'status' => 'required'
         ]);
 
-        dd($request);
-
+        
         if ($request->hasFile('imagen')) {
             $archivo = $request->file('imagen');  // ponemos al archivo en una variable
-            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $nombre = '/img/portada/' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
             $nombre = 'img/portada/portada.jpg';
         }        
-               
+
+        //dd($request);
+              
         //$post = post::create($request->all());
         $post = new Post();
         $post->titulo = $request->input('titulo');  // recibimos el contenido 
@@ -92,11 +111,16 @@ class PostController extends Controller
         $post->user_id = $request->input('user_id');
         $post->imagen = $nombre;
         $post->categoria_id = $request->input('categoria_id');
+
+        
         $post->save();
         $posts = Post::orderBy('id', 'desc')->paginate(5);
+
+        
+        $autor = User::all()->where('id',$post->user_id)->first();
         // ['tags' => $tags]
         //dd($posts);
-        return view('userBlog.posts.index',compact('posts'))->with('info','post creada con éxito');;
+        return view('userBlog.posts.index',compact('posts'))->with('info','post creado con éxito');
     }
 
     /**
@@ -109,9 +133,10 @@ class PostController extends Controller
     {
         // obtenemos la post con id
         $post = Post::find($id);
+        $autor = User::all()->where('id',$post->user_id)->first();
 
         // mostramos la vista 
-        return view('userBlog.posts.show',compact('post'));
+        return view('userBlog.posts.show',compact(['post','autor']));
     }
 
     /**
@@ -122,14 +147,15 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('name','id');
+        $categorias = Categoria::orderBy('nombre', 'ASC')->pluck('nombre','id');
         // traemos las etiquetas con un get, para luego mostrarlas 
         $etiquetas = Etiqueta::orderBy('nombre', 'ASC')->get();
         // obtenemos la post con id
         $post = Post::find($id);
-
+        $autor = User::all()->where('id',$post->user_id)->first();
+        
         // mostramos la vista 
-        return view('userBlog.posts.edit',compact('post','ccategorias','etiquetas'));
+        return view('userBlog.posts.edit',compact('post','categorias','autor'));
     }
 
     /**
@@ -145,26 +171,27 @@ class PostController extends Controller
         $post = Post::find($id);
         // llenamos los datos con fill y request
         // salvo la imagen y el slug
+
         $post->fill($request->except(['imagen', 'slug'])); 
-        
+        //dd($post);
         // llenamos el slug
         $post->slug = str_slug($post->titulo);
-
+        //dd($post);
 
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
-            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
-            $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
+            $nombre = '/img/portada/' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $archivo->move(public_path().'/img/portada',$nombre);;    // lo movemos a la carpeta img de public del proyecto
         }else{
             $nombre = 'img/portada/portada.jpg';
         }
 
         // llenamos la foto
         $post->imagen = $nombre;
-
+        //dd($post);
         // salvamos y retomamos a la vista de la post con mensaje incluido
         $post->save();
-        return redirect()->route('etiquetas.show',[$post])->with('info','post actualizada con éxito');
+        return redirect()->route('posts.show',[$post])->with('info','post actualizado con éxito');
     }
 
     /**
@@ -175,9 +202,14 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id)->delete();
 
+        $post = Post::find($id)->delete();;
+        //$autor = User::all()->where('id',$post->user_id)->first();
+        //$posteos = Post::all();
+        
         // retornamos a la vista anterior
-        return back()->with('info','Eliminada correctamente');
+        //return view('userBlog.posts.index',compact(['posts','autor']))->with('info','Posteo eliminado correctamente');
+        return redirect()->route('home')->with('info','post actualizado con éxito');
+        
     }
 }

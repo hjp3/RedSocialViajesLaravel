@@ -21,7 +21,7 @@
 	            	<p>{{ $post->cuerpo }}</p>
 	            	<p><strong>Estado:&nbsp;</strong>{{ $post->status }}</p>
 	            	<p>Imagen:<img src="{{ $post->imagen }}"></p>
-	            	<a href="{{route('posts.index')}}" class="btn"><h3>Volver</h3></a>
+	            	<a href="{{ url('/blogUsuario',['id'=> $autor->id]) }}" class="btn"><h3>Volver</h3></a>
         	</div>
 
 			</div>

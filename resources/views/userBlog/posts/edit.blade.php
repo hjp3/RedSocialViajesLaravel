@@ -7,7 +7,7 @@
 			<div class="col-md-8 col-md-offset-2">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						Editar Etiqueta
+						Editar Post
 					</div>
 					
 				</div>
@@ -18,21 +18,21 @@
 						@csrf
 						{{method_field('PATCH')}}
 						<div class="form-group">
-							<label for="nombre">Título</label>
-							<input type="text" class="form-control" name="nombre" value="{{ $post->titulo }}">
+							<label for="titulo">Título</label>
+							<input type="text" class="form-control" name="titulo" value="{{ $post->titulo }}">
 							<label for="extracto">Resumen</label>
 							<textarea name="extracto" class="form-control">{{ $post->extracto }}</textarea>
 							<label for="cuerpo">Cuerpo</label>
 							<textarea name="cuerpo" class="form-control">{{ $post->cuerpo }}</textarea>
 							<label for="status">Estado:</label><br>
 							<input type="radio" name="status" value="BORRADOR">borrador
-  							<input type="radio" name="status" value="PUBLICADO">publicado<br>
+  							<input type="radio" name="status" value="PUBLICADO" checked>publicado<br>
   							<label>Subí una foto</label>
 							<input type="file" class="form-control" name="imagen">
 							<br>
 							<button type="submit" class="btn btn-primary">Editar Post</button>
 							<br>
-							<a href="{{route('posts.index')}}" class="btn"><h3>Volver</h3></a>
+							<a href="{{ url('/blogUsuario',['id'=> $autor->id]) }}"><h3>Volver</h3></a>
 						</div>
 
 							

@@ -2,6 +2,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
+use App\Post;
+use App\Viaje;
 use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
@@ -49,7 +51,12 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);  // usamos la función id
-        return view('usuarios.show', compact('user'));    // pasamos los viajes a la vista show
+        $posteos = Post::orderBy('id','DESC')->where('user_id',$user->id)->get();
+        //$viajes = Viaje::orderBy('id','DESC')->where('user_id',$user->id)->get();
+        
+        //$viajes = User::find($id)->viajes()->where('user_id',$user->id)->get(); //->orderBy('id','DESC')->get();
+        //dd($viajes);
+        return view('usuarios.show', compact(['user','posteos']));   
     }
     /**
      * Show the form for editing the specified resource.
@@ -78,7 +85,8 @@ class UserController extends Controller
         $user->fill($request->except(['avatar','old_avatar']));
         if ($request->hasFile('avatar')) {
             $archivo = $request->file('avatar');  // ponemos al archivo en una variable
-            $nombre = "/img/avatars/". time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            //"/img/avatars/"
+            $nombre = "/img/avatars/" . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/avatars',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
             $nombre = $user->old_avatar;
@@ -97,14 +105,19 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
+        $users = USER::paginate(16);
         // return redirect()->route('/');
-        return view("quienes_somos");
+        return redirect('admin')->with('info','usuario borrado');
     }
+
+
     public function sumarViaje($id_u,$id_v){
         $user = User::findOrFail($id_u);
         // llamamos al objeto user, a la relación roles, le adjuntamos un viaje indicado
-        $user->viajes()->sync($id_v);
+        $user->viajes()->attach($id_v);
     }
+    
+
     public function borrarViaje($id_u,$id_v){
         $user = User::findOrFail($id_u);
         // llamamos al objeto user, a la relación roles, le borramos el viaje indicado

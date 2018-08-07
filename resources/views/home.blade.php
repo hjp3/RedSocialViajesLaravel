@@ -38,8 +38,11 @@
                             <a class="dropdown-item" href="{{ route('logout') }}">
                             Logout</a>
                             <li><a href="{{route('users.index')}}" class="btn"><h3>Ver Otros Viajeros</h3></a></li>
-                            <li><a href="{{ route('blog_usuario')}}" class="pull-right">Mis Posteos</a></li>
-
+                            <li><a href="/indexado/{{Auth::user()->id}}">Crud Posteos</a></li>
+                            <li><a href="posts/create">Escribir un Posteo</a></li>
+                            <li><p><a href="/users/{{Auth::user()->id}}">Mi página pública</a></li>
+                            <li><a href="/categorias">Crud Categorias</a></li>
+                            <li><a href="/etiquetas">Crud Etiquetas</a></li>
                         </li>
                     @endguest
                     </ul>

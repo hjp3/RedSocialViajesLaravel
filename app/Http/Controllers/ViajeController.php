@@ -49,7 +49,7 @@ class ViajeController extends Controller
 
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
-            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $nombre = '/img/portada/' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
             $nombre = 'img/portada/portada.jpg';
@@ -74,7 +74,8 @@ class ViajeController extends Controller
     public function show($id)
     {
         $viaje = Viaje::find($id);  // usamos la función find
-        return view('viaje.show', compact('viaje'));    // pasamos los viajes a la vista show
+        $count = $viaje->users()->count();
+        return view('viaje.show',compact(['viaje','count'])); // pasamos los viajes a la vista show con el contador
     }
 
 
@@ -115,10 +116,10 @@ class ViajeController extends Controller
         $viaje->fill($request->except('portada'));    // llenamos los datos del modelo con menos la foto
         if ($request->hasFile('portada')) {
             $archivo = $request->file('portada');  // ponemos al archivo en una variable
-            $nombre = 'img/portada' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
+            $nombre = '/img/portada/' . time() . $archivo->getClientOriginalName(); // para que no se repita el nombre
             $archivo->move(public_path().'/img/portada',$nombre);    // lo movemos a la carpeta img de public del proyecto
         }else{
-            $nombre = 'img/portada/portada.jpg';
+            $nombre = '/img/portada/portada.jpg';
         }
 
         $viaje->portada = $nombre;
@@ -136,7 +137,7 @@ class ViajeController extends Controller
     {
          $viaje = Viaje::find($id);
          $viaje->delete();
-         return redirect()->route('viaje.index');
+         return redirect('admin')->with('info','viaje borrado');
     }
 
     public function UsuariosAnotados($id){
@@ -145,25 +146,25 @@ class ViajeController extends Controller
         return redirect()->route('viaje.show',compact('anotados'));
     }
 
-    public function anotarUsuario($viajeId, $userId){
+    public function anotarUsuarioViaje($viajeId, $usuarioId){
         $viaje = Viaje::findOrFail($viajeId);
         $user = User::findOrFail($usuarioId);
         $viajeUsuario = $viaje->users()->attach($user);
-        return redirect()->route('viaje.show',compact('viajeUsuario'));
+        return view('home')->with('info','te sumaste al viaje');
     }
 
-    public function borrarUsuario($viajeId, $userId){
+    public function borrarUsuarioViaje($viajeId, $userId){
         $viaje = Viaje::findOrFail($viajeId);
         $user = User::findOrFail($userId);
         $viajeUsuario = $viaje->users()->detach($user);
-        return redirect()->route('viaje.show',compact('viajeUsuario'));
+        return view('home')->with('info','te borraste del viaje');
     }
 
-    public function contarUsuarios($viajeId){
-        $viaje = Viaje::findOrFail($viajeId);
-        $count = $viaje->users()->count();
-        return redirect()->route('viaje.show',compact('count'));
-    }
+    // public function contarUsuarios($viajeId){
+    //     $viaje = Viaje::findOrFail($viajeId);
+    //     $count = $viaje->users()->count();
+    //     return redirect()->route('viaje.show',compact(['viaje','$count']));
+    // }
 
    /* 
     $users = User::where('votes', '>', 100)->take(10)->get();

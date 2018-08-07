@@ -27,10 +27,14 @@
  						    <a href="{{ route('etiqueta', $etiqueta->slug) }}">{{$etiqueta->nombre}}</a>
  						@endforeach
  					</div>
+ 					{{-- {{dd($autor)}} --}}
+ 					<p>Posteado por <a href="/users/{{$autor->id}}">{{ $autor->name }}</a></p> 
 				</div>
 			</div>
 			<br>
-			{{-- <a href="{{ route('posts')}}" class="pull-right">Volver</a> --}}
+			<a href="{{ route('blog')}}" class="pull-right">Ver Posteos de Todos</a>
+			<br>
+			<a href="{{ url('/blogUsuario',['id'=> $autor->id]) }}">Ver Posteos del Usuario</a>
 		</div>
 	</div>
 
