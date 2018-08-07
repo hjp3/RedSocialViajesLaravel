@@ -53,10 +53,10 @@ class UserController extends Controller
         $user = User::find($id);  // usamos la función id
         $posteos = Post::orderBy('id','DESC')->where('user_id',$user->id)->get();
         //$viajes = Viaje::orderBy('id','DESC')->where('user_id',$user->id)->get();
-        
-        //$viajes = User::find($id)->viajes()->where('user_id',$user->id)->get(); //->orderBy('id','DESC')->get();
-        //dd($viajes);
-        return view('usuarios.show', compact(['user','posteos']));   
+
+      //$viajes = User::find($id)->viajes()->where('user_id',$user->id)->get(); //->orderBy('id','DESC')->get();
+        dd($posteoss);
+        return view('usuarios.show', compact(['user','posteos']));
     }
     /**
      * Show the form for editing the specified resource.
@@ -116,7 +116,7 @@ class UserController extends Controller
         // llamamos al objeto user, a la relación roles, le adjuntamos un viaje indicado
         $user->viajes()->attach($id_v);
     }
-    
+
 
     public function borrarViaje($id_u,$id_v){
         $user = User::findOrFail($id_u);

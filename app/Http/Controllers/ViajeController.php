@@ -16,7 +16,7 @@ class ViajeController extends Controller
     public function index()
     {
         $viajes = Viaje::all();  // traemos a todos los viajes
-        return view('viaje.index', compact('viajes'));    // pasamos los viajes a la vista   
+        return view('viaje.index', compact('viajes'));    // pasamos los viajes a la vista
 
     }
 
@@ -54,12 +54,12 @@ class ViajeController extends Controller
         }else{
             $nombre = 'img/portada/portada.jpg';
         }
-        
+
         $viaje = new Viaje();
         $viaje->titulo = $request->input('titulo');  // recibimos el contenido del input
         $viaje->descripcion = $request->input('descripcion');  // recibimos el contenido del input
-        $viaje->fecha_partida = $request->input('fecha_partida');  
-        $viaje->fecha_regreso = $request->input('fecha_regreso');  
+        $viaje->fecha_partida = $request->input('fecha_partida');
+        $viaje->fecha_regreso = $request->input('fecha_regreso');
         $viaje->portada = $nombre;
         $viaje->save();
         return redirect()->route('viaje.index');
@@ -83,7 +83,7 @@ class ViajeController extends Controller
     // public function show(Viaje $viaje)
     // {
     //     // resuelve automáticamente el orm para show
-    //     return view('viaje.show', compact('viaje'));    // pasamos los viajes a la vista  
+    //     return view('viaje.show', compact('viaje'));    // pasamos los viajes a la vista
     // }
 
 
@@ -146,16 +146,16 @@ class ViajeController extends Controller
         return redirect()->route('viaje.show',compact('anotados'));
     }
 
-    public function anotarUsuarioViaje($viajeId, $usuarioId){
-        $viaje = Viaje::findOrFail($viajeId);
-        $user = User::findOrFail($usuarioId);
+    public function anotarUsuarioViaje($usuarioId, $viajeId){
+        $viaje = Viaje::find($viajeId);
+        $user = User::find($usuarioId);
         $viajeUsuario = $viaje->users()->attach($user);
-        return view('home')->with('info','te sumaste al viaje');
+        return redirect()->route('home')->with('info','te sumaste al viaje');
     }
 
-    public function borrarUsuarioViaje($viajeId, $userId){
-        $viaje = Viaje::findOrFail($viajeId);
-        $user = User::findOrFail($userId);
+    public function borrarUsuarioViaje($userId, $viajeId){
+        $viaje = Viaje::find($viajeId);
+        $user = User::find($userId);
         $viajeUsuario = $viaje->users()->detach($user);
         return view('home')->with('info','te borraste del viaje');
     }
@@ -166,7 +166,7 @@ class ViajeController extends Controller
     //     return redirect()->route('viaje.show',compact(['viaje','$count']));
     // }
 
-   /* 
+   /*
     $users = User::where('votes', '>', 100)->take(10)->get();
     Code::where('to_be_used_by_user_id', '!=' , 2)->orWhereNull('to_be_used_by_user_id
         instalar node.js

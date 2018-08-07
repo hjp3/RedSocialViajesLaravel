@@ -6,14 +6,14 @@
 		<h1 class="title">{{ $user->name }}</h1>
 		<br>
 		<img class=" mx-auto d-block" style="width:300px;height:300px" src="{{$user->avatar}}" alt="imagen de la portada">
-		<br>	
+		<br>
 	    <h3 class="">Nombre de Usuario: {{ $user->usuario }}</h3>
-    	<br>	
+    	<br>
 	    <h3 class="">Email: {{ $user->email }}</h3>
-
+				{{ dd($posteos) }}
 		<p>Número de Posteos realizados: {{ $posteos->count() }}</p>
-		<a href="{{ url('/blogUsuario',['id'=> $user->id]) }}" class="btn btn-primary">Ver Posteos</a>	
-		
+		<a href="{{ url('/blogUsuario',['id'=> $user->id]) }}" class="btn btn-primary">Ver Posteos</a>
+
 		<p>Numero de Viajes a los que se sumó: {{ $user->viajes()->count() }}</p>
 		    @foreach ($user->viajes as $viaje)
 		        <h4><a href="/viaje/{{$viaje->id}}">{{ $viaje->titulo }}</a></h4>
@@ -26,12 +26,10 @@
 				{{method_field('delete')}}
 				<button type="submit" class="btn btn-danger">Borrar</button>
 			</form>
-		@endif	
+		@endif
 		<br>
-		<a href="/users" class="btn btn-primary">Volver</a>	
-	</div>		    	
-			    
-	
+		<a href="/users" class="btn btn-primary">Volver</a>
+	</div>
+
+
 @endsection
-
-
