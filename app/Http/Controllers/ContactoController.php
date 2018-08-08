@@ -5,14 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contacto;
 use App\User;
-{{-- route('contactos.store, $post->nombre') --}}
+// {{-- route('contactos.store, $post->nombre') --}}
 
-{{-- first() devuelve todo
-pluck('id')->first() devuelve sólo el id --}}
+// {{-- first() devuelve todo
+// pluck('id')->first() devuelve sólo el id --}}
 
 
 class ContactoController extends Controller
 {
+
+    // function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
+
     /**
      * Display a listing of the resource.
      *
@@ -20,9 +26,11 @@ class ContactoController extends Controller
      */
     public function index()
     {
+        $this->middleware('auth');
         $contactos = Contacto::orderBy('id','DESC')->paginate();
-        $user = 
-        return view('contactos.index',compact('contactos'));
+        $usuarios = User::all();
+
+        return view('contactos.index',compact(['contactos','usuarios']));
     }
 
     /**
@@ -32,7 +40,7 @@ class ContactoController extends Controller
      */
     public function create()
     {
-        return view('contactos');
+        return view('contactos.create');
     }
 
     /**
@@ -45,7 +53,7 @@ class ContactoController extends Controller
     {
         $contactos = Contacto::create($request->all());
 
-        return redirect()->route('/')->with('info','nos llegó tu mensaje, en breve te vamos a responder');
+        return back()->with('info','nos llegó tu mensaje, pronto te responderemos');
     }
 
     /**
@@ -56,6 +64,7 @@ class ContactoController extends Controller
      */
     public function show($id)
     {
+        $this->middleware('auth');
         $contacto = Contacto::find($id);
 
         return view('contactos.show', compact('contacto'));

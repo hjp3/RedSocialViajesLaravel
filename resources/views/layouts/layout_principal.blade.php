@@ -30,7 +30,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
             <ul>
               <li><a href="{{ url('/quienes_somos') }}" class="btn">Quienes Somos</a></li>
               <li><a href="{{route('viaje.index')}}" class="btn">Proximos Viajes</a></li>
-              <li><a href="{{ url('/contactos') }}" class="btn">Contactanos</a></li>
+              <li><a href="{{ route('contactos.create') }}" class="btn">Contactanos</a></li>
               <li><a href="{{ url('/faq') }}" class="btn"> F.A.Q.</a></li>
               @if (Auth::user())
                 <li><a href="{{ url('/home') }}"><img src="{{ Auth::user()->avatar }}" alt="" style="width: 40px"></li>

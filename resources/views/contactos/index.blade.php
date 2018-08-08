@@ -17,23 +17,20 @@
 	            		<thead>
 	            			<tr>
 	            				<th width="10px">ID</th>
-	            				<th>Nombre:</th>
+	            				<th>ID_USUARIO:</th>
 	            				<th colspan="3">&nbsp;</th>
 	            			</tr>
 	            		</thead>
 	            		<tbody>
-	            			@foreach($categorias as $categoria)
+	            			@foreach($contactos as $contacto)
 	            			<tr>
-	            				<td>{{ $categoria->id }}</td>
-	            				<td>{{ $categoria->nombre }}</td>
+	            				<td>{{ $contacto->id }}</td>
+                                <td><a href="/users/{{ $contacto->user_id }}">{{ $contacto->user_id }}</a></td>
 	            				<td width="10px">
-	            					<a href="{{ route('categorias.show', $categoria->id) }}" class="btn btn-sm btn-default">Ver</a>
+	            					<a href="{{ route('contactos.show', $contacto->id) }}" class="btn btn-default">Ver Más</a>
 	            				</td>
 	            				<td width="10px">
-	            					<a href="{{ route('categorias.edit', $categoria->id) }}" class="btn btn-sm btn-default">Editar</a>
-	            				</td>
-	            				<td width="10px">
-	            					<form action="categorias/{{$categoria->id}}" method="post">
+	            					<form action="contactos/{{ $contacto->id }}" method="post">
 										{{ csrf_field() }}
 										{{method_field('delete')}}
 									<button type="submit" class="btn btn-danger">Borrar</button>
@@ -43,7 +40,7 @@
 	            			@endforeach
 	            		</tbody>
 	            	</table>
-	            	{{ $categorias->render() }}        
+	            	{{ $contactos->render() }}        
 				</div>
 
 			</div>
