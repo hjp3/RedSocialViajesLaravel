@@ -10,9 +10,9 @@
 	    <h3 class="">Nombre de Usuario: {{ $user->usuario }}</h3>
     	<br>
 	    <h3 class="">Email: {{ $user->email }}</h3>
-				{{ dd($posteos) }}
-		<p>Número de Posteos realizados: {{ $posteos->count() }}</p>
-		<a href="{{ url('/blogUsuario',['id'=> $user->id]) }}" class="btn btn-primary">Ver Posteos</a>
+
+		{{-- <p>Número de Posteos realizados: {{ $posteos->count() }}</p>
+		<a href="{{ url('/blogUsuario',['id'=> $user->id]) }}" class="btn btn-primary">Ver Posteos</a> --}}
 
 		<p>Numero de Viajes a los que se sumó: {{ $user->viajes()->count() }}</p>
 		    @foreach ($user->viajes as $viaje)

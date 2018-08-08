@@ -14,7 +14,7 @@
 			    	{{-- <p class="">{{ $viaje->descripcion }}</p> --}}
 			    	<p class="">Fecha de Partida: {{ $viaje->fecha_partida }}</p>
 			    	<p class="">Fecha de Regreso: {{ $viaje->fecha_regreso }}</p>
-			    	@if (Auth::user()->email == "admin@admin.com")
+			    	@if (Auth::check() && Auth::user()->email == "admin@admin.com")
 			    		<form action="/viaje/{{ $viaje->id }}" method="post">
 							{{ csrf_field() }}
 							{{method_field('delete')}}

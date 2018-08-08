@@ -35,6 +35,10 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function contactos(){
+        return $this->hasMany(Contacto::class);
+    }
+
 
     // un usuario puede pertenecer a muchos viajes
     // y tener muchos viajes

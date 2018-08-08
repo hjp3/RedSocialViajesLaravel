@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ViajesSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(PostsTablaSeeder::class);
-        
+        $this->call(ContactosTableSeeder::class);
         
         
     }

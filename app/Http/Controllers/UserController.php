@@ -52,10 +52,11 @@ class UserController extends Controller
     {
         $user = User::find($id);  // usamos la función id
         $posteos = Post::orderBy('id','DESC')->where('user_id',$user->id)->get();
+        //dd($posteos);
         //$viajes = Viaje::orderBy('id','DESC')->where('user_id',$user->id)->get();
 
       //$viajes = User::find($id)->viajes()->where('user_id',$user->id)->get(); //->orderBy('id','DESC')->get();
-        dd($posteoss);
+        //dd($posteoss);
         return view('usuarios.show', compact(['user','posteos']));
     }
     /**

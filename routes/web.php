@@ -20,7 +20,7 @@ Route::get('/', function () {
 // páginas secundarias de la página principal
 Route::get('/faq', 'PaginaController@faq');
 
-Route::get('/contactos', 'PaginaController@contactos');
+//Route::get('/contactos', 'PaginaController@contactos');
 
 Route::get('/quienes_somos', 'PaginaController@quienes_somos');
 
@@ -29,6 +29,7 @@ Route::get('/quienes_somos', 'PaginaController@quienes_somos');
 Auth::routes();
 
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 Route::resource('users','UserController');   // accedemos a todas las rutas/métodos de user
 
@@ -67,14 +68,21 @@ Route::get('etiqueta/{id}','BlogController@etiqueta')->name('etiqueta');
 // usuario blog
 Route::resource('etiquetas','EtiquetaController'); 
 Route::resource('categorias','CategoriaController'); 
+Route::resource('contactos','ContactoController'); 
 
 
+
+Route::delete('blogUsuario/posts/{id}','PostController@destroy');
+Route::delete('indexado/posts/{id}', 'PostController@destroy');
 Route::resource('posts','PostController'); 
 Route::get('indexado/{id}','PostController@indexado')->name('postsIndexados');
 
 
 // administrador
 Route::get('/admin','AdminController@index')->name('admin');
+
+
+
  
 // mostramos todos los viajes que participa el usuario 1
 // obtenemos las id de viajes relacionadas con el usuario

@@ -14,16 +14,16 @@
 			    	<p class="title">Nombre: {{ $user->name }}</p>
 			    	<p ({{ $user->usuario }})</p>
 			    	<a href="/users/{{$user->id}}" class="btn btn-primary">Ver Más...</a>
-			    @if (Auth::check())
-					 	@if (Auth::user()->email == "admin@admin.com"))
+			    
+					@if (Auth::user()->email == "admin@admin.com"))
 
-				    	<form action="/users/{{ $user->id }}" method="post">
-							{{ csrf_field() }}
-							{{method_field('delete')}}
-							<button type="submit" class="btn btn-danger">Borrar</button>
-						  </form>
-						@endif	
+			    	  <form action="/users/{{ $user->id }}" method="post">
+						{{ csrf_field() }}
+						{{method_field('delete')}}
+						<button type="submit" class="btn btn-danger">Borrar</button>
+					  </form>
 					@endif
+						
 			    <br><br>
 			    </div>
 

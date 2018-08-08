@@ -209,7 +209,7 @@ class PostController extends Controller
 
         // retornamos a la vista anterior
         //return view('userBlog.posts.index',compact(['posts','autor']))->with('info','Posteo eliminado correctamente');
-        return redirect()->route('home')->with('info','post actualizado con éxito');
+        return redirect()->route('home')->with('info','post borrado con éxito');
 
     }
 }
