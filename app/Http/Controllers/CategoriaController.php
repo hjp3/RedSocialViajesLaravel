@@ -55,7 +55,7 @@ class CategoriaController extends Controller
         //$etiqueta = Etiqueta::create($request->all());
         $categoria = new Categoria();
         $categoria->nombre = $request->input('nombre');  // recibimos el contenido 
-        $categoria->slug = str_slug($catagoria->nombre);
+        $categoria->slug = str_slug($categoria->nombre);
         $categoria->cuerpo = $request->input('cuerpo');
         $categoria->save();
         $categorias = Categoria::orderBy('id', 'desc')->paginate(5);
